@@ -1,3 +1,5 @@
+# mkdocs-with-confluence
+
 ![PyPI](https://img.shields.io/pypi/v/mkdocs-with-confluence)
 [![Build Status](https://app.travis-ci.com/pawelsikora/mkdocs-with-confluence.svg?token=Nxwjs6L2kEPqZeJARZzo&branch=main)](https://app.travis-ci.com/pawelsikora/mkdocs-with-confluence)
 [![codecov](https://codecov.io/gh/pawelsikora/mkdocs-with-confluence/branch/master/graph/badge.svg)](https://codecov.io/gh/pawelsikora/mkdocs-with-confluence)
@@ -5,23 +7,29 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/pawelsikora/mkdocs-with-confluence)
 ![PyPI - License](https://img.shields.io/pypi/l/mkdocs-with-confluence)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mkdocs-with-confluence)
-# mkdocs-with-confluence 
 
-MkDocs plugin that converts markdown pages into confluence markup
-and export it to the Confluence page
+A MkDocs plugin that converts Markdown documentation to Confluence markup and publishes it to Confluence pages.
 
-## Setup
+## ✨ Features
+
+- Seamless Markdown to Confluence conversion
+- Supports nested page hierarchies
+- Environment-aware deployment
+- Dry-run mode for testing
+- Verbose logging for debugging
+
+## 📦 Installation
+
 Install the plugin using pip:
 
-`pip install mkdocs-with-confluence`
+```bash
+pip install mkdocs-with-confluence
 
-Activate the plugin in `mkdocs.yml`:
+Enable the plugin in your mkdocs.yml:
 
-```yaml
 plugins:
   - search
   - mkdocs-with-confluence
-```
 
 More information about plugins in the [MkDocs documentation: mkdocs-plugins](https://www.mkdocs.org/user-guide/plugins/).
 
@@ -29,22 +37,21 @@ More information about plugins in the [MkDocs documentation: mkdocs-plugins](htt
 
 Use following config and adjust it according to your needs:
 
-```yaml
+plugins:
   - mkdocs-with-confluence:
-        host_url: https://<YOUR_CONFLUENCE_DOMAIN>/rest/api/content
-        space: <YOUR_SPACE>
-        parent_page_name: <YOUR_ROOT_PARENT_PAGE>
-        username: <YOUR_USERNAME_TO_CONFLUENCE>
-        password: <YOUR_PASSWORD_TO_CONFLUENCE>
-        enabled_if_env: MKDOCS_TO_CONFLUENCE
-        #verbose: true
-        #debug: true
-        dryrun: true
-```
+      host_url: "https://your-domain.atlassian.net/rest/api/content"
+      space: "SPACE_KEY"  # e.g., "DOCS"
+      parent_page_name: "Home"
+      username: "your@email.com"  # Recommended to use API token
+      password: "your-api-token"  # Generate at: https://id.atlassian.com/manage-profile/security/api-tokens
+      enabled_if_env: "MKDOCS_TO_CONFLUENCE"  # Optional safety switch
+      dryrun: true              # Test mode (default)
+      # verbose: true           # Enable detailed logging
+      # debug: true             # Enable debug mode
 
-## Parameters:
 
 ### Requirements
-- md2cf
-- mimetypes
-- mistune
+Python 3.6+
+md2cf>=2.0.0
+mistune>=2.0.0
+mimetypes (standard library)
