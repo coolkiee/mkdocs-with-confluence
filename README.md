@@ -24,9 +24,9 @@ Install the plugin using pip:
 
 ```bash
 pip install mkdocs-with-confluence
+```
 
 Enable the plugin in your mkdocs.yml:
-
 plugins:
   - search
   - mkdocs-with-confluence
